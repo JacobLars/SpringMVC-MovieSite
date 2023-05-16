@@ -1,0 +1,110 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Movie</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="movie-div-container">
+             <a id="back-link" th:href="@{/home}">Back</a>    
+            <div id="movie-container" th:object="${movie}">
+               
+                <img id="movie-image" th:src="${movie.poster}">
+                <p id="movie-title" th:text="${movie.title}"></p>
+                <p id="movie-type" th:text="'Type: ' + ${movieType}"></p>
+                <p id="movie-year" th:text="'Release Year: ' + ${movie.year}"></p>
+                <p id="movie-release" th:text="'Released: ' + ${movie.released}"></p>
+                <p id="movie-duration" th:text="'Duration: ' + ${movie.runtime}"></p>
+                <p id="movie-genre" th:text="'Genres: ' + ${movie.genre}"></p>
+                <p id="movie-director" th:text="'Director: ' + ${movie.director}"></p>
+                <p id="movie-writers" th:text="'Writers: ' + ${movie.writer}"></p>
+                <p id="movie-actors" th:text="'Actors: ' + ${movie.actors}"></p>
+                <p id="movie-language" th:text="'Languages: ' + ${movie.language}"></p>
+                <p id="movie-country" th:text="'Country: ' + ${movie.country}"></p>
+                <p id="movie-awards" th:text="'Awards: ' + ${movie.awards}"></p>
+
+                <div id="ratings-container">
+                    <p id="ratings-header">Ratings</p>
+                    <th:block th:each="rating : ${ratings}">
+
+                        <p class="ratings-source" th:text="${rating.source} + ':  ' + ${rating.value}"></p>
+
+
+                    </th:block>
+                </div>
+                <div id="plot-container">
+                <p id="plot-header">Plot</p>
+                <p id="movie-plot" th:text="${movie.plot}"></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<style>
+
+    body{
+        background-color: #202840;
+        font-family: monospace;
+        color: white;
+    }
+    
+    #back-link{
+        color: white;
+        font-size: xx-large;
+        height: 30px;
+    }
+    
+    #back-link:hover{
+        background-color: #4a5f91;
+    }
+    
+    p{
+        font-size: large;
+    }
+    #movie-div-container{
+        width: 80%;
+        background-color: #171d2e;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+    }
+
+    #movie-title{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    #movie-container{
+        width: 50%;
+
+        background-color: #2a3757;
+        text-align: center;
+
+    }
+
+
+    #movie-image{
+        margin-top: 10px;
+        height: 600px;
+        width: 400px;
+    }
+
+    #ratings-header{
+        font-size: x-large;
+        text-decoration: underline;
+    }
+    #ratings-container{
+        margin-top: 30px;
+    }
+    
+    #plot-container{
+        margin-top: 30px;
+    }
+    
+    #plot-header{
+        font-size: x-large;
+        text-decoration: underline;
+    }
+</style>
